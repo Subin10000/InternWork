@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num1=[1,4,7]; //one digit is right and in wrong place 
+        let num2=[1,8,9]; //one digit is right and in its place
+        let num3=[9,6,4]; //two digits are right and in wrong place
+        let num4=[5,2,3]; //all digits are in wrong place
+        let num5=[2,8,6]; //one digit is right and in wrong place
+
+        // eleminating all wrong digits from all the array.
+        num4.forEach(condition4);
+
+        function condition4(item){
+            for(let i=0;i<3;i++){
+                if(num1[i]==item){
+                    num1[i]=null;
+                }
+                if(num2[i]==item){
+                    num2[i]=null;
+                }
+                if(num3[i]==item){
+                    num3[i]=null;
+                }
+                if(num5[i]==item){
+                    num5[i]=null;
+                }
+            }
+        }
+
+        for(let i=0;i<3;i++){
+            for(let j=0;j<3;j++){
+                if(num1[i]==num2[j]){
+                    num1[i]=null;
+                    num2[i]=null;
+                }
+            }
+        }
+
+        for(let i=0;i<3;i++){
+            for(let j=0;j<3;j++){
+                if(num2[i]==num5[j]){
+                    num2[i]=null;
+                    num5[i]=null;
+                }
+            }
+        }
+        
+        
+
+        const result = [];
+
+        for(let i = 0; i<3; i++){
+            if(num2[i]!=null){
+                result[2]=num2[i];
+            }
+        }
+
+        for(let i = 0; i<3; i++){
+            if(num2[i]==9){
+                num2[i]=null;
+            }
+            if(num3[i]==9){
+                num3[i]=null;
+            }
+            if(num1[i]==9){
+                num5[i]=null;
+            }
+        }
+
+        num1.forEach(condition1);
+        function condition1(item){
+            for(let i=0;i<3;i++){
+                if(num3[i]==item){
+                    num3[i]=null;
+                    let op=num1.indexOf(item)
+                    num1[op]=null;
+                }
+                if(num1[i]!=null){
+                    result[1]=num1[i];
+                }
+            }
+        }
+
+        num3.forEach(condition3);
+        function condition3(item){
+            if(item!=null){
+                let test1=num3.indexOf(item);
+                let test2=num5.indexOf(item);
+                result[0]=item;
+                num3[test1]=null;
+                num5[test2]=null;
+                
+            }
+        }
+
+    
+
+
+        console.log(num1);
+        console.log(num2);
+        console.log(num3);
+        console.log(num5);
+        console.log(result);
+    </script>
+</body>
+</html>

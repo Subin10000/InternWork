@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="file" id="uploadfile" accept=".csv">
+    <button id="uploadConfirm">upload</button>
+
+    <script src="">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+
+    <script>
+
+        const uploadconfirm = document.getElementById("uploadConfirm").addEventListener("click", () => {
+            Papa.parse(document.getElementById("uploadfile").files[0],
+                {
+                    download: true,
+                    Header: true,
+                    skipEmptyLines: true,
+                    complete: function (result) {
+                        console.log(result.data.length);
+
+                    }
+                });
+        });
+    </script>
+</body>
+
+</html>
